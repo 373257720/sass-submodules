@@ -1,0 +1,51 @@
+@mixin positonAbsolute($vertical,$ver,$horizontal,$hor){
+    position: absolute;
+    @if ($vertical == t){
+        top: $ver
+    }@else if($vertical == b){
+        bottom: $ver
+    }@else if($vertical == m){
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    @if ($horizontal == l) {
+        left: $hor
+    }@else if($horizontal == r){
+        right:$hor
+    }@else if($horizontal == m){
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+@mixin selector($selector) {
+    
+}
+@mixin prefix($property, $value, $prefixes) {
+    @each $prefix in $prefixes {
+      -#{$prefix}-#{$property}: $value;
+    }
+    #{$property}: $value;
+}
+@mixin border($px:1px, $color:#dcdfe6,$shape:solid, $radius:0) {
+    border: $px $shape $color;  
+    border-radius: $radius;
+    // @include prefix(border-radius,$radius, webkit ms moz);
+}
+@mixin boxModel($width, $height, $background-color,$padding:0,$margin:0 ,
+$box-sizing: 'border-box') 
+{
+    box-sizing: $box-sizing;
+    width: $width;
+    height: $height;
+    background: $background-color;
+    padding:$padding;
+    margin: $margin;
+}
+@mixin Font($FontSize, $lineHeight, $color) {
+    font-size: $FontSize;
+    line-height: $lineHeight;
+    color: $color;
+}
+@mixin displayflex($direction, $horizontal, $vertical) {
+ /* 定义 */ 
+}
