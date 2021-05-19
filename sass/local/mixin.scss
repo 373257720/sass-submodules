@@ -31,17 +31,17 @@
     border-radius: $radius;
     // @include prefix(border-radius,$radius, webkit ms moz);
 }
-@mixin boxModel($width, $height, $background-color,$padding:0,$margin:0 ,
+@mixin boxModel($width:inherit, $height:inherit, $background-color:$themeColor,$padding:0,$margin:0 ,
 $box-sizing: 'border-box') 
 {
     box-sizing: $box-sizing;
     width: $width;
     height: $height;
-    background: $background-color;
+    background-color: $background-color;
     padding:$padding;
     margin: $margin;
 }
-@mixin Font($FontSize, $lineHeight, $color) {
+@mixin Font($FontSize:inherit, $lineHeight:inherit, $color:white) {
     font-size: $FontSize;
     line-height: $lineHeight;
     color: $color;

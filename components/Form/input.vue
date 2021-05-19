@@ -1,11 +1,12 @@
 <template>
   <div class="GZ-input">
     <el-input
-     class="GZ-input"
-      placeholder="Please input"
-      clearable
+      :placeholder="placeholder"
+      :clearable="isclearable"
+      :show-password="showpassword"
       :style="CombineStyle"
       v-model="curName"
+      :disabled="disabled"
     ></el-input>
   </div>
 </template>
@@ -13,6 +14,22 @@
 export default {
   props: {
     name: String,
+    isclearable: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    placeholder: {
+      type: String,
+      default: 'Please input'
+    },
+    showpassword: {
+      type: Boolean,
+      default: false
+    },
     styleParameters: Object
   },
   data () {
@@ -22,9 +39,10 @@ export default {
         '--color': '#606266',
         '--width': '60px',
         '--height': '40px',
+        '--lineHeight': '40px',
         '--border': '2px',
         '--shape': 'solid',
-        '--radius': '5px',
+        '--radius': '0',
         '--background': 'white',
         '--padding': '0 30px 0 15px'
       },
@@ -51,15 +69,13 @@ export default {
 </script>
 <style lang='scss' scoped>
 .GZ-input {
-  @include Font(
-    $FontSize: inherit,
-    $lineHeight: var(--lineHeight),
-    $color: #606266
-  );
   /deep/ .el-input {
-    width: var(--width);
     .el-input__inner {
-      color: var(--color);
+      @include Font(
+        $FontSize: inherit,
+        $lineHeight: var(--lineHeight),
+        $color: var(--color)
+      );
       @include border(
         $px: var(--border),
         $shape: var(--shape),
